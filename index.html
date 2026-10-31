@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas des maths</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<script src="engine/cover.js" data-contents></script>
+<!-- every chapter draws with three.js: fetch it now, so a chapter opens without waiting on it -->
+<link rel="prefetch" href="https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js" crossorigin>
+<link rel="prefetch" href="https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.core.js" crossorigin>
+<style>
+  body { min-height: 100vh; padding: 0 16px 80px; }
+  header { max-width: 1180px; margin: 0 auto; padding: 22px 12px; display: flex; justify-content: space-between; font: 500 12px var(--mono); letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+  header b { font: 500 19px var(--serif); letter-spacing: 0; text-transform: none; color: var(--strong); }
+  .hero { text-align: center; margin: 72px auto 64px; max-width: 760px; }
+  .hero h1 { font: 400 clamp(46px, 7vw, 84px)/1 var(--serif); color: var(--strong); letter-spacing: -.015em; }
+  .hero p { font: italic 400 clamp(19px, 2.2vw, 24px)/1.4 var(--serif); color: var(--muted); margin-top: 16px; }
+  .shelf { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 22px; }
+  .section { max-width: 1180px; margin: 56px auto 18px; padding: 0 4px; font: 500 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .card { position: relative; background: var(--card); border-radius: 14px; box-shadow: var(--lift); padding: 18px 20px 20px; text-decoration: none; display: flex; flex-direction: column; min-height: 360px; transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s; }
+  @media (hover: hover) { a.card:hover { transform: translateY(-4px) rotate(-.4deg); } }
+  a.card:focus-visible { transform: translateY(-4px) rotate(-.4deg); }
+  .card .no { display: flex; justify-content: space-between; font: 11px var(--mono); color: var(--muted); letter-spacing: .04em; }
+  .card h2 { font: 400 30px/1.05 var(--serif); color: var(--strong); margin-top: 18px; }
+  .card h2 + i { font: italic 400 20px/1.2 var(--serif); color: var(--muted); }
+  .card img { margin-top: auto; width: 100%; aspect-ratio: 9 / 8; object-fit: cover; border-radius: 6px; }
+  .card.soon { box-shadow: none; background: transparent; border: 1px dashed var(--faint); }
+  .card.soon h2 { color: var(--lo); } .card.soon h2 + i { color: var(--faint); }
+  .card .wait { margin-top: auto; font: 11px var(--mono); color: var(--lo); letter-spacing: .06em; text-transform: uppercase; }
+  header span { display: flex; align-items: center; gap: 18px; }
+  .gh { display: flex; color: var(--muted); }
+  .gh:hover { color: var(--strong); }
+  /* phones: each book a row, its picture beside its title, so the shelf can be taken in */
+  @media (max-width: 600px) {
+    body { padding: 0 12px 56px; }
+    header { padding: 18px 4px; }
+    .hero { margin: 36px auto 32px; }
+    .section { margin: 36px auto 12px; }
+    .shelf { gap: 10px; }
+    .card { min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 104px; grid-template-rows: auto auto 1fr; column-gap: 14px; padding: 14px 14px 14px 16px; }
+    .card h2 { font-size: 25px; margin-top: 10px; }
+    .card h2 + i { font-size: 17px; }
+    .card img { grid-column: 2; grid-row: 1 / 4; margin: 0; width: 104px; align-self: center; }
+  }
+  .credit { max-width: 1180px; margin: 56px auto 0; font: 12px var(--mono); color: var(--muted); text-align: center; }
+  .credit a { color: var(--hi); }
+  .card .cnt { margin-top: 8px; font: 11px var(--mono); color: var(--red); letter-spacing: .02em; }
+  .legend { max-width: 760px; margin: -36px auto 0; text-align: center; font: 12px/1.6 var(--mono); color: var(--muted); }
+  @media (max-width: 600px) { .card { grid-template-rows: auto auto auto 1fr; } .card .cnt { grid-column: 1; } .card img { grid-row: 1 / 5; } .legend { margin-top: -16px; } }
+</style>
+</head>
+<body>
+  <header><b>Atlas des maths</b><span>Collège · lycée · MPSI</span></header>
+  <section class="hero">
+    <h1>Les maths, démontées pièce par pièce.</h1>
+    <p>Chaque chapitre, une figure en 3D qu’on fait tourner, qu’on arrête et qu’on décompose</p>
+  </section>
+  <p class="legend">Sur chaque carte, l’année où la notion est enseignée en Chine : 初二 = 4e, 初三 = 3e, 高一 = seconde, 高二 = première, 大学 = université.</p>
+  <h2 class="section">Collège</h2>
+  <section class="shelf">
+    <a class="card" href="pythagore/">
+      <div class="no"><span>N° 01</span><span>7 pages</span></div>
+      <h2>Pythagore</h2><i>le triangle rectangle et ses carrés</i>
+      <span class="cnt">Chine : 初二 · 勾股定理</span>
+      <img src="img/pythagore.jpg" alt="Un triangle rectangle 3, 4, 5 avec un carré quadrillé posé sur chacun de ses côtés">
+    </a>
+    <a class="card" href="thales/">
+      <div class="no"><span>N° 04</span><span>4 pages</span></div>
+      <h2>Thalès</h2><i>droites parallèles et proportions</i>
+      <span class="cnt">Chine : 初三 · 相似</span>
+      <img src="img/thales.jpg" alt="Un triangle coupé par une droite parallèle à sa base">
+    </a>
+    <a class="card" href="solides/">
+      <div class="no"><span>N° 05</span><span>5 pages</span></div>
+      <h2>Les solides</h2><i>volumes et patrons</i>
+      <span class="cnt">Chine : 高一 · 立体几何初步</span>
+      <img src="img/solides.jpg" alt="Un cube découpé en trois pyramides colorées">
+    </a>
+    <a class="card" href="cercle/">
+      <div class="no"><span>N° 13</span><span>6 pages</span></div>
+      <h2>Le cercle</h2><i>angle inscrit, tangentes, π de Liu Hui</i>
+      <span class="cnt">Chine : 初三 · 圆</span>
+      <img src="img/cercle.jpg" alt="Un angle inscrit dans un cercle et l’angle au centre correspondant">
+    </a>
+  </section>
+  <h2 class="section">Lycée</h2>
+  <section class="shelf">
+    <a class="card" href="second/">
+      <div class="no"><span>N° 12</span><span>6 pages</span></div>
+      <h2>Le second degré</h2><i>paraboles et moyennes</i>
+      <span class="cnt">Chine : 初三 · 二次函数</span>
+      <img src="img/second.jpg" alt="Une parabole qui coupe l’axe en deux racines">
+    </a>
+    <a class="card" href="explog/">
+      <div class="no"><span>N° 14</span><span>5 pages</span></div>
+      <h2>Exponentielle et logarithme</h2><i>la croissance et sa réciproque</i>
+      <span class="cnt">Chine : 高一 · 指数与对数</span>
+      <img src="img/explog.jpg" alt="La courbe de 2 puissance x et celle du logarithme, symétriques">
+    </a>
+    <a class="card" href="trigo/">
+      <div class="no"><span>N° 06</span><span>5 pages</span></div>
+      <h2>Trigonométrie</h2><i>le cercle qui tourne</i>
+      <span class="cnt">Chine : 高一 · 三角函数</span>
+      <img src="img/trigo.jpg" alt="Le cercle trigonométrique déroulé en sinusoïde">
+    </a>
+    <a class="card" href="derivee/">
+      <div class="no"><span>N° 02</span><span>5 pages</span></div>
+      <h2>La dérivée</h2><i>la pente d’une courbe</i>
+      <span class="cnt">Chine : 高二 · 导数</span>
+      <img src="img/derivee.jpg" alt="Une courbe avec une sécante qui se rapproche de la tangente">
+    </a>
+    <a class="card" href="suites/">
+      <div class="no"><span>N° 07</span><span>4 pages</span></div>
+      <h2>Suites</h2><i>pas à pas vers une limite</i>
+      <span class="cnt">Chine : 高二 · 数列</span>
+      <img src="img/suites.jpg" alt="L’escalier d’une suite récurrente">
+    </a>
+    <a class="card" href="coniques/">
+      <div class="no"><span>N° 15</span><span>5 pages</span></div>
+      <h2>Les coniques</h2><i>ellipse, hyperbole, parabole</i>
+      <span class="cnt">Chine : 高二 · 圆锥曲线</span>
+      <img src="img/coniques.jpg" alt="Un double cône coupé par un plan incliné">
+    </a>
+    <a class="card" href="espace/">
+      <div class="no"><span>N° 16</span><span>5 pages</span></div>
+      <h2>Géométrie dans l’espace</h2><i>vecteurs, plans, distances</i>
+      <span class="cnt">Chine : 高二 · 空间向量</span>
+      <img src="img/espace.jpg" alt="La section hexagonale d’un cube">
+    </a>
+    <a class="card" href="denombrement/">
+      <div class="no"><span>N° 17</span><span>5 pages</span></div>
+      <h2>Dénombrement</h2><i>combinaisons et triangle de Yang Hui</i>
+      <span class="cnt">Chine : 高二 · 计数原理</span>
+      <img src="img/denombrement.jpg" alt="Le triangle de Yang Hui en tuiles">
+    </a>
+    <a class="card" href="probas/">
+      <div class="no"><span>N° 18</span><span>5 pages</span></div>
+      <h2>Probabilités</h2><i>de la binomiale à la loi normale</i>
+      <span class="cnt">Chine : 高二 · 随机变量</span>
+      <img src="img/probas.jpg" alt="Une planche de Galton remplie de billes">
+    </a>
+    <a class="card" href="integrale/">
+      <div class="no"><span>N° 08</span><span>4 pages</span></div>
+      <h2>L’intégrale</h2><i>l’aire sous la courbe</i>
+      <span class="cnt">Chine : 大学 · 定积分</span>
+      <img src="img/integrale.jpg" alt="L’aire sous une parabole découpée en rectangles">
+    </a>
+  </section>
+  <h2 class="section">Prépa · MPSI et au-delà</h2>
+  <section class="shelf">
+    <a class="card" href="lineaire/">
+      <div class="no"><span>N° 03</span><span>5 pages</span></div>
+      <h2>Applications linéaires</h2><i>matrices, déterminant, noyau</i>
+      <span class="cnt">Chine : 大学 · 线性代数</span>
+      <img src="img/lineaire.jpg" alt="Le cube unité déformé en parallélépipède">
+    </a>
+    <a class="card" href="ev/">
+      <div class="no"><span>N° 11</span><span>5 pages</span></div>
+      <h2>Espaces vectoriels</h2><i>sous-espaces, bases, dimension</i>
+      <span class="cnt">Chine : 大学 · 线性空间</span>
+      <img src="img/ev.jpg" alt="Un plan engendré par deux vecteurs">
+    </a>
+    <a class="card" href="complexes/">
+      <div class="no"><span>N° 09</span><span>5 pages</span></div>
+      <h2>Nombres complexes</h2><i>rotations et similitudes du plan</i>
+      <span class="cnt">Chine : 高一 · 复数 / 大学</span>
+      <img src="img/complexes.jpg" alt="Les racines sixièmes de l’unité">
+    </a>
+    <a class="card" href="dl/">
+      <div class="no"><span>N° 10</span><span>4 pages</span></div>
+      <h2>Développements limités</h2><i>approcher une fonction par un polynôme</i>
+      <span class="cnt">Chine : 大学 · 泰勒公式</span>
+      <img src="img/dl.jpg" alt="L’exponentielle et un de ses polynômes de Taylor">
+    </a>
+    <a class="card" href="deuxvar/">
+      <div class="no"><span>N° 19</span><span>5 pages</span></div>
+      <h2>Deux variables</h2><i>surfaces, gradient, points critiques</i>
+      <span class="cnt">Chine : 大学 · 多元函数</span>
+      <img src="img/deuxvar.jpg" alt="Une colline en 3D avec son maillage">
+    </a>
+  </section>
+  <p class="credit">Moteur de rendu repris de <a href="https://github.com/nathanliow/atlas-of-physics">Atlas of Physics</a> (licence MIT).</p>
+</body>
+</html>

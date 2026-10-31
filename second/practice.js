@@ -1,0 +1,16 @@
+export const PRACTICE = {
+  0: [{ q: 'Laquelle de ces paraboles est la plus étroite ?', choices: ['y = x²', 'y = −3x²', 'y = 0,5x²', 'y = 2x²'], answer: 1,
+    why: '<p>L’étroitesse dépend de |a| : |−3| = 3 est le plus grand. Le signe ne change que le sens d’ouverture.</p>' }],
+  1: [{ q: 'Le sommet de y = 2x² − 8x + 3 est', choices: ['(2 ; −5)', '(−2 ; 27)', '(4 ; 3)', '(2 ; 3)'], answer: 0,
+    why: '<p>α = −b/(2a) = 8/4 = 2, et β = f(2) = 8 − 16 + 3 = −5.</p>' }],
+  2: [{ q: 'Pour quelles valeurs de m l’équation x² + 4x + m = 0 a-t-elle deux racines distinctes ?', choices: ['m < 4', 'm > 4', 'm = 4', 'm < −4'], answer: 0,
+    why: '<p>Δ = 16 − 4m &gt; 0 ⇔ m &lt; 4.</p>' },
+    { q: 'Les racines de x² − 7x + 10 = 0 ont pour somme et produit', choices: ['7 et 10', '−7 et 10', '7 et −10', '10 et 7'], answer: 0,
+    why: '<p>Viète : somme = −b/a = 7, produit = c/a = 10 (les racines sont 2 et 5).</p>' }],
+  3: [{ q: 'L’ensemble des solutions de −x² + 4 ≥ 0 est', choices: ['[−2 ; 2]', ']−∞ ; −2] ∪ [2 ; +∞[', '[0 ; 4]', 'ℝ'], answer: 0,
+    why: '<p>Racines ±2, a = −1 &lt; 0 : la parabole est tournée vers le bas, positive entre les racines.</p>' }],
+  4: [{ q: 'Un fermier a 40 m de grillage et un mur : il clôt trois côtés d’un rectangle. L’aire maximale est', choices: ['100 m²', '200 m²', '400 m²', '160 m²'], answer: 1,
+    why: '<p>Côtés x, x et 40 − 2x : A = x(40 − 2x) = −2(x − 10)² + 200. Maximum 200 m² pour x = 10.</p>' }],
+  5: [{ q: 'Pour x > 0, la plus petite valeur de x + 4/x est', choices: ['2', '4', '5', 'elle n’en a pas'], answer: 1,
+    why: '<p>x + 4/x ≥ 2√(x · 4/x) = 4, avec égalité pour x = 4/x, soit x = 2. C’est un exercice type du 基本不等式.</p>' }],
+};
