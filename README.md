@@ -2,7 +2,7 @@
 
 Un manuel interactif en 3D, du collège à la MPSI, construit sur le moteur d'[Atlas of Physics](https://github.com/nathanliow/atlas-of-physics) (licence MIT).
 
-Dix-neuf chapitres, avec en regard l'année où la notion est enseignée en Chine (manuels 人教版) :
+Vingt chapitres, avec en regard l'année où la notion est enseignée en Chine (manuels 人教版) :
 
 | N° | Chapitre | Niveau (France) | Chine |
 |----|----------|-----------------|-------|
@@ -13,6 +13,7 @@ Dix-neuf chapitres, avec en regard l'année où la notion est enseignée en Chin
 | 12 | Le second degré (et 基本不等式) | 2nde | 初三 二次函数 |
 | 14 | Exponentielle et logarithme | 2nde–Tle | 高一 指数函数与对数函数 |
 | 06 | Trigonométrie | 1re | 高一 三角函数 |
+| 20 | Le produit scalaire (et Al-Kashi, 余弦定理) | 1re | 高一 平面向量的数量积 |
 | 02 | La dérivée | 1re | 高二 导数 |
 | 07 | Suites | 1re–Tle | 高二 数列 |
 | 15 | Les coniques | (prépa) | 高二 圆锥曲线 |
