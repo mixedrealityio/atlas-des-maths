@@ -147,7 +147,7 @@ export function buildWorld(E) {
     }
     st.mat = mat;
     place(fI, mat); if (mid) place(fM, mid);
-    if (!is('homo') || Math.abs(s.k) > 0.45) pos[is('compo') ? 'Fii' : 'Fi'] = M.apply(mat, [0.3, 1.2]);
+    if (!is('homo') || Math.abs(s.k) > 0.45) pos[is('compo') ? 'Fii' : 'Fi'] = is('compo') ? [3 * Math.cos(Math.atan2(M.A[1], M.A[0]) + 2 * s.al + 0.4), 3 * Math.sin(Math.atan2(M.A[1], M.A[0]) + 2 * s.al + 0.4)] : M.apply(mat, [0.3, 1.2]);
     if (is('compo') || is('homo')) delete pos.Fl;
     // visibilité APRÈS rodTo / liveCurve.set
     axes.forEach((r, i) => r.visible = r.visible && onAxes.includes(i));
