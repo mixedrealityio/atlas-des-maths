@@ -2,7 +2,7 @@
 
 Un manuel interactif en 3D, du collège à la MPSI, construit sur le moteur d'[Atlas of Physics](https://github.com/nathanliow/atlas-of-physics) (licence MIT).
 
-Vingt et un chapitres, avec en regard l'année où la notion est enseignée en Chine (manuels 人教版) :
+Vingt-deux chapitres, avec en regard l'année où la notion est enseignée en Chine (manuels 人教版) :
 
 | N° | Chapitre | Niveau (France) | Chine |
 |----|----------|-----------------|-------|
@@ -11,6 +11,7 @@ Vingt et un chapitres, avec en regard l'année où la notion est enseignée en C
 | 05 | Les solides | cycle 4 | 高一 立体几何初步 |
 | 13 | Le cercle (angle inscrit, tangentes, Liu Hui) | 3e | 初三 圆 |
 | 21 | Les transformations (symétries, rotation, homothétie) | 4e–3e | 初二 轴对称 · 初三 旋转, 位似 |
+| 22 | Systèmes d’équations (鸡兔同笼, pivot de Gauss et 方程术) | 2nde (3 × 3 : MPSI) | 初一 二元一次方程组 · 三元一次方程组 |
 | 12 | Le second degré (et 基本不等式) | 2nde | 初三 二次函数 |
 | 14 | Exponentielle et logarithme | 2nde–Tle | 高一 指数函数与对数函数 |
 | 06 | Trigonométrie | 1re | 高一 三角函数 |
